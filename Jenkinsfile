@@ -1,59 +1,23 @@
 pipeline {
-
 agent any
 
+
+
 stages {
-
-
-
-
-
-
-
-stage('compile') {
-
+stage('Checkout') {
 steps {
-
-bat 'mvn clean compile'
-
+git 'https://github.com/mohammadazeez963/javaProject.git'
 }
-
 }
-
+stage('Compile') {
+steps {
+echo 'Compile'
+}
+}
 stage('Run') {
-
 steps {
-
-bat 'mvn package'
-
-
-
-
-
+echo 'Run'
 }
-
 }
-
-stage('Test Report using jacoco') {
-
-steps {
-
-jacoco()
-
 }
-
-}
-
-stage('Building Docker Image') {
-
-steps {
-
-echo 'Building Docker Image'
-
-}
-
-}
-
-}
-
 }
